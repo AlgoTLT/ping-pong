@@ -26,17 +26,18 @@ class Player(GameSprite):
         keys = key.get_pressed()
         if keys[K_w] and self.rect.y > 5:
             self.rect.y -= self.speed
-        if keys[K_s] and self.rect.y < 690:
+        if keys[K_s] and self.rect.y < 640:
             self.rect.y += self.speed
 
     def update_r(self):
         keys = key.get_pressed()
         if keys[K_UP] and self.rect.y > 5:
             self.rect.y -= self.speed
-        if keys[K_DOWN] and self.rect.y < 690:
+        if keys[K_DOWN] and self.rect.y < 640:
             self.rect.y += self.speed
 
-
+player_left = Player('left.png', 10, 350, 10, 20, 80)
+player_right = Player('right.png', 1050, 350, 10, 20, 80)
 
 clock = time.Clock()
 FPS = 60
@@ -51,6 +52,12 @@ while run:
 
     if not finish:
         window.blit(background,(0,0))
+
+        player_left.update_l()
+        player_right.update_r()
+
+        player_left.draw()
+        player_right.draw()
 
         display.update()
 
